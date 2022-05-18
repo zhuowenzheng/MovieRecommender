@@ -15,14 +15,15 @@ public class User {
         this.userId = userId;
     }
 
-    public User set(String movieName, Double score){
-        this.movieList.add(new Movie(movieName,score));
+    public User set(String movieId, String Name, Double rating){
+        this.movieList.add(new Movie(movieId,Name,rating));
         return this;
     }
+
     //查找
-    public Movie find(String movieName){
+    public Movie find(String movieId){
         for(Movie movie: movieList){
-            if(movie.movieName.equals(userId)){
+            if(movie.movieId.equals(userId)){
                 return movie;
             }
         }

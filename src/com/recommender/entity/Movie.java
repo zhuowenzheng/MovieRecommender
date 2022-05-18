@@ -3,15 +3,17 @@ package com.recommender.entity;
 import java.util.Objects;
 
 public class Movie implements Comparable<Movie> {
-    public String movieName;
     public String movieId;
+    public String movieName;
     public Double rating;
-    public Movie(String movieName, Double rating) {
-        this.movieName = movieName;
+    public Movie(String movieID, String Name, Double rating) {
+        this.movieId = movieID;
+        this.movieName = Name;
         this.rating = rating;
     }
 @Override
     public String toString() {
+
         return "Movie{" +
         "movieName='" + movieName + '\'' +
         ", rating=" + rating +

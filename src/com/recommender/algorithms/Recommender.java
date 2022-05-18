@@ -27,7 +27,7 @@ public class Recommender {
 
         for (User u2 : users) {
             if (!u2.userId.equals(userId)) {
-                double distance = pearson_dis(u2.movieList, u1.movieList);
+                double distance = Math.abs(pearson_dis(u2.movieList, u1.movieList));
                 distances.put(distance, u2.userId);
                 //System.out.println("call method:userId:"+u2.userId + "distance:"+ distance );
             }
@@ -55,11 +55,6 @@ public class Recommender {
 
         rating1ScoreCollect.sort(Collections.reverseOrder());
         rating2ScoreCollect.sort(Collections.reverseOrder());
-
-        System.out.println(rating1ScoreCollect);
-        System.out.println(rating2ScoreCollect);
-        System.out.println();
-
 
         double Ex= rating1ScoreCollect.stream().mapToDouble(x->x).sum();
         double Ey= rating2ScoreCollect.stream().mapToDouble(y->y).sum();
@@ -102,7 +97,7 @@ public class Recommender {
         //根据自己和邻居的电影计算推荐的电影
         List<Movie> recommendationMovies = new ArrayList<>();
         for (Movie movie : neighborRatings.movieList) {
-            if (userRatings.find(movie.movieName) == null) {
+            if (userRatings.find(movie.movieId) == null) {
                 recommendationMovies.add(movie);
             }
         }
